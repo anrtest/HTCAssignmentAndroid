@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HTC Assignment</string>
+    <string name="name_state_country">City : %1$s \nState : %2$s \nCountry : %3$s</string>
+
+</resources>
