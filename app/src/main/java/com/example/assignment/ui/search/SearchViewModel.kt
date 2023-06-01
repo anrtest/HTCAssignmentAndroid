@@ -6,6 +6,7 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.assignment.api.response.bycity.ResponseByCityName
 import com.example.assignment.api.response.bylatlong.ResponseByLatLong
+import com.example.assignment.api.response.country.CountryResponse
 import com.example.assignment.data.HTCRepository
 
 class SearchViewModel @ViewModelInject constructor(
@@ -15,7 +16,12 @@ class SearchViewModel @ViewModelInject constructor(
 
     var searchByCityResponse: MutableLiveData<ResponseByCityName> = MutableLiveData<ResponseByCityName>()
     var searchByLatLong: MutableLiveData<ResponseByLatLong> = MutableLiveData<ResponseByLatLong>()
+    var getCountries: MutableLiveData<CountryResponse> = MutableLiveData<CountryResponse>()
 
+
+    fun callCountriesApi(){
+        repository.hitCountryListApi(getCountries, viewModelScope)
+    }
 
     fun callWeatherApi(cityName: String){
         repository.hitSearchByCity(cityName, searchByCityResponse, viewModelScope)

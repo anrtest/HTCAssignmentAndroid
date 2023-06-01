@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.assignment.ui.search.SearchFragment"
-        android:label="Enter City"
+        android:label="Enter Country"
         tools:layout="@layout/fragment_search">
         <action
             android:id="@+id/action_searchFragment_to_detailFragment"

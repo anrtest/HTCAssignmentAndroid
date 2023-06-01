@@ -7,7 +7,7 @@
 
         <variable
             name="model"
-            type="com.example.assignment.api.response.bycity.ResponseByCityNameItem" />
+            type="com.example.assignment.api.response.country.CountryResponseItem" />
 
         <variable
             name="itemClickListener"
@@ -25,14 +25,45 @@
             android:layout_marginTop="5dp"
             android:padding="10dp">
 
-            <TextView
-                android:id="@+id/text_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textColor="@color/black"
-                android:text="@{@string/name_state_country(model.name, model.state, model.country)}"
-                />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/image_view"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+
+                    android:layout_marginLeft="10dp" />
+
+                <TextView
+                    android:id="@+id/tv_country_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/image_view"
+                    android:text="@{model.name}"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/purple_500"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_country_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="@{@string/cap_curr_pop(model.capital, model.currency, model.population)}"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
 

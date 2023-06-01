@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.assignment.api.ApiService
 import com.example.assignment.api.response.bycity.ResponseByCityName
 import com.example.assignment.api.response.bylatlong.ResponseByLatLong
+import com.example.assignment.api.response.country.CountryResponse
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -12,6 +13,18 @@ import javax.inject.Singleton
 
 @Singleton
 class HTCRepository @Inject constructor(private val apiService: ApiService) {
+
+    fun hitCountryListApi(
+        liveData: MutableLiveData<CountryResponse>,
+        viewModelScope: CoroutineScope
+    ){
+        viewModelScope.launch(Dispatchers.IO) {
+            val result = apiService.getCountryList()
+            if (result.isSuccessful) {
+                liveData.postValue(result.body())
+            }
+        }
+    }
 
     fun hitSearchByCity(
         cityName: String,
